@@ -44,35 +44,49 @@ public class Main {
                     break;
 
                 case 3:
-                    Car removedCar = parkingLot.removeCar();
-                    if (removedCar != null) {
-                        System.out.println("Car " + removedCar.getLicensePlate() + " removed successfully.");
+                    if (parkingLot.getParkedCars().isEmpty()) {
+                        System.out.println("There are currently no parked cars to be removed.");
                     } else {
-                        System.out.println("Parking lot is empty.");
+                        Car removedCar = parkingLot.removeCar();
+                        if (removedCar != null) {
+                            System.out.println("Car " + removedCar.getLicensePlate() + " removed successfully.");
+                        } else {
+                            System.out.println("Error removing car.");
+                        }
                     }
                     break;
 
                 case 4:
-                    System.out.print("Enter car license plate: ");
-                    licensePlate = scanner.next();
-                    Car foundCar = parkingLot.findCar(licensePlate);
-                    if (foundCar != null) {
-                        System.out.println("Car " + foundCar.getLicensePlate() + " found in parking lot.");
+                    if (parkingLot.getParkedCars().isEmpty()) {
+                        System.out.println("There are currently no parked cars to search for.");
                     } else {
-                        System.out.println("Car not found in parking lot.");
+                        System.out.print("Enter car license plate: ");
+                        licensePlate = scanner.next();
+                        Car foundCar = parkingLot.findCar(licensePlate);
+                        if (foundCar != null) {
+                            System.out.println("Car " + foundCar.getLicensePlate() + " found in parking lot.");
+                        } else {
+                            System.out.println("Car not found in parking lot.");
+                        }
                     }
                     break;
 
                 case 5:
-                    parkingLot.sortParkedCars();
-                    System.out.println("Parked cars sorted by license plate.");
+                    if (parkingLot.getParkedCars().isEmpty()) {
+                        System.out.println("There are currently no parked cars to get sorted.");
+                    } else {
+                        parkingLot.sortParkedCars();
+                        System.out.println("Parked cars sorted by license plate.");
+                    }
                     break;
 
                 case 6:
                     System.out.println("Parking Lot Name: " + parkingLot.getName());
-                    System.out.println("Parking Lot Capacity: " + parkingLot.getParkingLot().capacity());
+                    System.out.println("Parking Lot Capacity: " + parkingLot.getCapacity());
                     System.out.println("Parking Queue Size: " + parkingLot.getParkingQueue().size());
-                    System.out.println("Parked Cars: " + parkingLot.getParkedCars());
+                    System.out.print("Parked Cars: ");
+                    parkingLot.getParkedCars().forEach(Car -> System.out.print(" | " + Car.getLicensePlate() + " | "));
+                    System.out.println();
                     break;
 
                 case 7:
