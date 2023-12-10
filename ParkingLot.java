@@ -5,12 +5,14 @@ public class ParkingLot {
     private Queue<Car> parkingQueue;
     private Stack<Car> parkingLot;
     private LinkedList<Car> parkedCars;
+    private int capacity;
 
     public ParkingLot(String name, int size) {
         this.name = name;
         this.parkingQueue = new LinkedList<>();
         this.parkingLot = new Stack<>();
         this.parkedCars = new LinkedList<>();
+        this.capacity = size;
     }
 
     public void addCarToQueue(Car car) {
@@ -18,12 +20,13 @@ public class ParkingLot {
     }
 
     public Car parkCar() {
-        Car car = parkingQueue.poll();
-        if (car != null) {
+        if (!parkingQueue.isEmpty() && parkingLot.size() < capacity) {
+            Car car = parkingQueue.poll();
             parkingLot.push(car);
             parkedCars.add(car);
+            return car;
         }
-        return car;
+        return null;
     }
 
     public Car removeCar() {
@@ -59,5 +62,8 @@ public class ParkingLot {
 
     public LinkedList<Car> getParkedCars() {
         return this.parkedCars;
+    }
+    public int getCapacity() {
+        return this.capacity;
     }
 }
