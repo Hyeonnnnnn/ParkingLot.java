@@ -111,9 +111,22 @@ public class ParkingLot {
         System.out.println("Parking Lot Capacity: " + capacity);
         System.out.println("Parking Queue Size: " + parkingQueue.size());
         System.out.print("Parked Cars: ");
-        parkedCars.forEach(car -> System.out.print(" " + car.getLicensePlate() + " ||"));
-        System.out.println();
+        parkedCars.forEach(car -> {
+            String carAsciiArt = "\n        __________\n" +
+                                 "       //     ||\\ \\\n" +
+                                 " _____//______||_\\ \\_\n" +
+                                 "        " + car.getLicensePlate() + "\n" +
+                                 "())  _          _    \\\n" +
+                                 "|_/ \\___________/ \\___|\n" +
+                                 "  \\_/           \\_/\n";
+        
+            System.out.print(carAsciiArt);
+        });        
+        System.out.println();    
     }
+    
+    
+    
 
     private Car findCar(String licensePlate) {
         for (Car car : parkedCars) {
@@ -132,5 +145,3 @@ public class ParkingLot {
 
     // Additional methods for your parking lot functionality
 }
-
-
