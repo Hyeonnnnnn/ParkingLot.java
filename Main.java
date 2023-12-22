@@ -3,6 +3,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        System.out.println("\n\n██████╗  █████╗ ██████╗ ██╗  ██╗██╗███╗   ██╗ ██████╗     ██╗      ██████╗ ████████╗\n" +
+                           "██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝██║████╗  ██║██╔════╝     ██║     ██╔═══██╗╚══██╔══╝\n" +
+                           "██████╔╝███████║██████╔╝█████╔╝ ██║██╔██╗ ██║██║  ███╗    ██║     ██║   ██║   ██║   \n" +
+                           "██╔═══╝ ██╔══██║██╔══██╗██╔═██╗ ██║██║╚██╗██║██║   ██║    ██║     ██║   ██║   ██║   \n" +
+                           "██║     ██║  ██║██║  ██║██║  ██╗██║██║ ╚████║╚██████╔╝    ███████╗╚██████╔╝   ██║   \n" +
+                           "╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚══════╝ ╚═════╝    ╚═╝   \n\n");
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter parking lot name: ");
@@ -12,16 +20,17 @@ public class Main {
         int parkingLotCapacity = scanner.nextInt();
 
         ParkingLot parkingLot = new ParkingLot(parkingLotName, parkingLotCapacity);
+        
 
         while (true) {
+           
             ParkingLot.displayMenu();
-
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
-                    parkingLot.addCarToQueue(scanner);;
+                    parkingLot.addCarToQueue(scanner);
                     break;
 
                 case 2:
